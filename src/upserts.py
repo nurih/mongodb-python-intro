@@ -3,7 +3,7 @@ from os import path
 
 sys.path.append(path.dirname(path.dirname(path.abspath(__file__))))
 
-from lib.people import People
+from util.people import People
 from pymongo import MongoClient
 
 p = People()
