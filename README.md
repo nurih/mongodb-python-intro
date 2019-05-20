@@ -6,7 +6,30 @@ A collection of code files featuring MongoDB interaction via PyMongo
 
 Flask demo using **Flask-PyMongo** for simple REST access to documents
 
-> Ensure you set FLASK_APP to `./src/api.py`
+Ensure you set FLASK_APP to `./src/api.py`
+
+If using Powershell
+
+```powershell
+# set it
+$env:FLASK_ENV = "development"
+$env:FLASK_APP = "./src/api.py"
+# print it
+gci env:FLASK_ENV
+gci env:FLASK_APP
+```
+
+If using bash
+
+```powershell
+# set it
+FLASK_ENV=development
+FLASK_APP=./src/api.py
+# print it
+
+echo $FLASK_ENV
+echo $FLASK_APP
+```
 
 If you ran `./src/inserts.py`, data should be populated and you should see results.
 

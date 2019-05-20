@@ -1,5 +1,5 @@
-
 from pymongo import MongoClient
+
 
 class People():
     DB_NAME = 'pyintro'
