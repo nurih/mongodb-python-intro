@@ -14,8 +14,12 @@ def home_page():
     return jsonify("Hi!", "GET /user/<id>", "POST /user/", "PUT /user/<id>")
 
 
+@app.route("/user/")
 @app.route("/user/<ObjectId:id>")
-def user_get(id):
+def user_get(id=None):
+    if id is None:
+        return dumps(mongo.db.peeps.find({}, {"name": 1, "_id": 1}).limit(64))
+
     result = mongo.db.peeps.find_one_or_404({"_id": id})
     return dumps(result)
 
@@ -52,6 +56,7 @@ def user_remove_likes(id):
 
     return update_result(result)
 
+
 @app.route("/user/<ObjectId:id>/fields/<string:field>", methods=["DELETE"])
 def user_remove_field(id, field):
     expr = {}
@@ -59,6 +64,7 @@ def user_remove_field(id, field):
     result = mongo.db.peeps.update_one({"_id": id}, {"$unset": expr})
 
     return update_result(result)
+
 
 def update_result(write_result):
     raw = dumps(write_result.raw_result)
