@@ -1,6 +1,6 @@
 from urllib.parse import quote_plus
 
-host = "10.20.30.40"
+host = "my.mongo.cluster"
 db = "demo"
 user = "asdf@example.com"
 password = "qwe:+3/"
