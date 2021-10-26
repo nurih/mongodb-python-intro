@@ -13,7 +13,8 @@ dir(db)
 peeps = db.peeps
 # ^^ same as db.get_collection('peeps')
 
-person_1 = {"name": "bob", "likes": ["toast", "butter"], "date": datetime.utcnow()}
+person_1 = {"name": "bob", "likes": [
+    "toast", "butter"], "date": datetime.utcnow()}
 
 
 person_id = peeps.insert_one(person_1).inserted_id
@@ -30,12 +31,12 @@ print("no filter:", found)
 # filter by id
 found = peeps.find_one({"_id": person_id})
 
-print("found with id:",found)
+print("found with id:", found)
 
 # filter by id - when inserted, the id was populated behind the scenes.
 found = peeps.find_one({"_id": person_1["_id"]})
 
-print("found with document's id field:",found)
+print("found with document's id field:", found)
 
 print("Id can be any type. this one is", type(found["_id"]))
 
